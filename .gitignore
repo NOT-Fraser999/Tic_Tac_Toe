@@ -1,0 +1,19 @@
+# Temp Files #
+###################
+*.AppleDouble
+*.AppleDB
+*.AppleDesktop
+*.DS_Store
+Thumbs.db
+*desktop.ini
+*.Cache
+
+# Build Folders #
+###############
+bin/*
+obj/*
+
+# sln Files #
+###############
+*.suo
+*.user
