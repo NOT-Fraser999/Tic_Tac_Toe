@@ -21,3 +21,4 @@ packages/*
 #############
 *.suo
 *.user
+TicTacToe.userprefs
