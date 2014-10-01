@@ -10,8 +10,8 @@ Thumbs.db
 
 # Build Folders #
 ###############
-bin/*
-obj/*
+*/bin/*
+*/obj/*
 
 # sln Files #
 ###############
