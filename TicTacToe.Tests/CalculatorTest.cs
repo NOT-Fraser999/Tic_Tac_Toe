@@ -101,7 +101,6 @@ namespace TicTacToe.Tests {
 
       // Divide two positive numbers which would give a decimal answer
       Assert.AreEqual(Calculator.Divide(1, 2), 0);
-
     }
   }
 }

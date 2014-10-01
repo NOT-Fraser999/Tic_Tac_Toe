@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.Portable", "TicTa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.Tests", "TicTacToe.Tests\TicTacToe.Tests.csproj", "{583B905F-CC89-4C68-BE20-486C8B794169}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apps", "Apps", "{EBD223BD-E28F-4BBB-AB48-CA311DC2B710}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe.Desktop", "TicTacToe.Desktop\TicTacToe.Desktop.csproj", "{FD198393-4EF8-401E-A507-1EAEB9214FD7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,8 +25,15 @@ Global
 		{583B905F-CC89-4C68-BE20-486C8B794169}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{583B905F-CC89-4C68-BE20-486C8B794169}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{583B905F-CC89-4C68-BE20-486C8B794169}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD198393-4EF8-401E-A507-1EAEB9214FD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD198393-4EF8-401E-A507-1EAEB9214FD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD198393-4EF8-401E-A507-1EAEB9214FD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD198393-4EF8-401E-A507-1EAEB9214FD7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FD198393-4EF8-401E-A507-1EAEB9214FD7} = {EBD223BD-E28F-4BBB-AB48-CA311DC2B710}
 	EndGlobalSection
 EndGlobal

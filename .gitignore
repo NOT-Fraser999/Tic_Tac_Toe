@@ -1,5 +1,5 @@
 # Temp Files #
-###################
+##############
 *.AppleDouble
 *.AppleDB
 *.AppleDesktop
@@ -9,11 +9,15 @@ Thumbs.db
 *.Cache
 
 # Build Folders #
-###############
+#################
 */bin/*
 */obj/*
 
+# Nuget #
+#########
+packages/*
+
 # sln Files #
-###############
+#############
 *.suo
 *.user

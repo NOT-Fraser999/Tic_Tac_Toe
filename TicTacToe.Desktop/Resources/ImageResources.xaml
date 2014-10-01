@@ -1,0 +1,26 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Image x:Key="BackImage"
+         Source="Images/back.png"
+         x:Shared="False" />
+  <Image x:Key="BlueOImage"
+         Source="Images/blue-o.png"
+         x:Shared="False" />
+  <Image x:Key="BlueXImage"
+         Source="Images/blue-x.png"
+         x:Shared="False" />
+  <Image x:Key="GreenOImage"
+         Source="Images/green-o.png"
+         x:Shared="False" />
+  <Image x:Key="GreenXImage"
+         Source="Images/green-x.png"
+         x:Shared="False" />
+  <Image x:Key="ClearImage"
+         Source="Images/clear.png"
+         x:Shared="False" />
+  <Image x:Key="GameGridImage"
+         Source="Images/grid.png"
+         x:Shared="False" />
+  <Image x:Key="NewGameImage"
+         Source="Images/new-game.png"
+         x:Shared="False" />
+</ResourceDictionary>
