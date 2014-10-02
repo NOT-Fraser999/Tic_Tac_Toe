@@ -11,6 +11,7 @@
       <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" />
       <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Resources/Styles/GameButton.xaml" />
+        <ResourceDictionary Source="Resources/Styles/TextButton.xaml" />
         <ResourceDictionary Source="Resources/Styles/ImageButton.xaml" />
         <ResourceDictionary Source="Resources/Styles/InfoTextBlock.xaml" />
         <ResourceDictionary Source="Resources/ImageResources.xaml" />

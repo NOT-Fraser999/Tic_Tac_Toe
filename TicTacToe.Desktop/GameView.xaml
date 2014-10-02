@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="TicTacToe.Desktop.GameView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:converters="clr-namespace:TicTacToe.Desktop.Converters"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:model="clr-namespace:TicTacToe.Desktop.Model"
+             xmlns:viewModel="clr-namespace:TicTacToe.Desktop.ViewModel"
+             d:DataContext="{d:DesignInstance Type=viewModel:GameViewModel}"
+             d:DesignHeight="620"
+             d:DesignWidth="340"
+             mc:Ignorable="d">
+  <UserControl.Background>
+    <ImageBrush ImageSource="Resources/Images/paper-background.png" />
+  </UserControl.Background>
+  <UserControl.Resources>
+    <converters:CellStateConverter x:Key="CellStateConverter" />
+  </UserControl.Resources>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="20" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="20" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+    <DockPanel Grid.Row="0"
+               HorizontalAlignment="Stretch"
+               LastChildFill="True">
+      <Button Command="{Binding BackCommand}"
+              Content="{StaticResource BackImage}"
+              DockPanel.Dock="Left"
+              Style="{StaticResource ImageButtonStyle}" />
+      <Button Command="{Binding NewGameCommand}"
+              Content="{StaticResource NewGameImage}"
+              DockPanel.Dock="Right"
+              Style="{StaticResource ImageButtonStyle}" />
+      <TextBlock Style="{StaticResource InfoTextBlockStyle}" Text="{Binding PlayerTurn, StringFormat=turn : {0}}" />
+    </DockPanel>
+
+    <ItemsControl Grid.Row="2" ItemsSource="{Binding GameBoard}">
+      <ItemsControl.Background>
+        <ImageBrush ImageSource="Resources/Images/grid.png" />
+      </ItemsControl.Background>
+      <ItemsControl.ItemsPanel>
+        <ItemsPanelTemplate>
+          <UniformGrid />
+        </ItemsPanelTemplate>
+      </ItemsControl.ItemsPanel>
+      <ItemsControl.ItemTemplate>
+        <DataTemplate DataType="{x:Type model:GameCell}">
+          <Button Command="{Binding RelativeSource={RelativeSource FindAncestor,
+                                                                   AncestorType={x:Type ItemsControl}},
+                                    Path=DataContext.CellClickedCommand}"
+                  CommandParameter="{Binding .}"
+                  Style="{StaticResource GameButtonStyle}" />
+        </DataTemplate>
+      </ItemsControl.ItemTemplate>
+    </ItemsControl>
+
+    <DockPanel Grid.Row="4"
+               HorizontalAlignment="Stretch"
+               LastChildFill="True">
+      <TextBlock DockPanel.Dock="Top"
+                 Style="{StaticResource InfoTextBlockStyle}"
+                 Text="{Binding PlayerOWins,
+                                StringFormat=player o : {0}}" />
+      <TextBlock Margin="0 15"
+                 Style="{StaticResource InfoTextBlockStyle}"
+                 Text="{Binding PlayerXWins,
+                                StringFormat=player x : {0}}" />
+    </DockPanel>
+  </Grid>
+</UserControl>

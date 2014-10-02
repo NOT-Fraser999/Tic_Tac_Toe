@@ -1,16 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Data;
 
 namespace TicTacToe.Desktop.Converters {
-  class CellStateConverter : IValueConverter {
+  internal class CellStateConverter : IValueConverter {
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
-      // var cellState = value.ToString();
-
+      var cellState = value.ToString();
+      string resourceKey;
+      switch (cellState) {
+        case "0":
+          return string.Empty;
+        case "1":
+          resourceKey = "BlueOImage";
+          break;
+        case "2":
+          resourceKey = "BlueXImage";
+          break;
+        default:
+          throw new NotImplementedException();
+      }
+      return Application.Current.FindResource(resourceKey) as Image;
     }
 
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {

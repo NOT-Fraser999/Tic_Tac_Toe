@@ -1,25 +1,40 @@
-﻿using System;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 
 namespace TicTacToe.Desktop.Model {
   public class GameCell : ObservableObject {
-    private string _cellState;
+    private int _column;
+    private int _row;
 
-    public GameCell(int state) {
-      CellState = state % 3 == 0 ? "0" : state % 2 == 0 ? "1" : "2";
+    public GameCell(int cellIndex) {
+      Row = cellIndex / 3;
+      Column = cellIndex % 3;
     }
 
-    public string CellState {
+    public int Row {
       get {
-        return _cellState;
+        return _row;
       }
-      set {
-        if (value == _cellState) {
+      private set {
+        if (value == _row) {
           return;
         }
 
-        _cellState = value;
-        RaisePropertyChanged(() => CellState);
+        _row = value;
+        RaisePropertyChanged(() => Row);
+      }
+    }
+
+    public int Column {
+      get {
+        return _column;
+      }
+      private set {
+        if (value == _column) {
+          return;
+        }
+
+        _column = value;
+        RaisePropertyChanged(() => Column);
       }
     }
   }
