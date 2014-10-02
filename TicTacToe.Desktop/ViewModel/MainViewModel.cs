@@ -1,5 +1,4 @@
-﻿using System;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
 
 namespace TicTacToe.Desktop.ViewModel {
@@ -9,7 +8,10 @@ namespace TicTacToe.Desktop.ViewModel {
     private readonly TutorialViewModel _tutorialViewModel;
     private ViewModelBase _currentView;
 
-    public MainViewModel(TutorialViewModel tutorialViewModel, GameViewModel gameViewModel, OptionsViewModel optionsViewModel) {
+    public MainViewModel(
+      TutorialViewModel tutorialViewModel,
+      GameViewModel gameViewModel,
+      OptionsViewModel optionsViewModel) {
       _tutorialViewModel = tutorialViewModel;
       _gameViewModel = gameViewModel;
       _optionsViewModel = optionsViewModel;

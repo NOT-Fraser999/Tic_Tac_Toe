@@ -2,6 +2,9 @@
   <Image x:Key="BackImage"
          Source="Images/back.png"
          x:Shared="False" />
+  <Image x:Key="BackPressedImage"
+         Source="Images/back-pressed.png"
+         x:Shared="False" />
   <Image x:Key="BlueOImage"
          Source="Images/blue-o.png"
          x:Shared="False" />
@@ -17,10 +20,16 @@
   <Image x:Key="ClearImage"
          Source="Images/clear.png"
          x:Shared="False" />
+  <Image x:Key="ClearPressedImage"
+         Source="Images/clear-pressed.png"
+         x:Shared="False" />
   <Image x:Key="GameGridImage"
          Source="Images/grid.png"
          x:Shared="False" />
   <Image x:Key="NewGameImage"
          Source="Images/new-game.png"
+         x:Shared="False" />
+  <Image x:Key="NewGamePressedImage"
+         Source="Images/new-game-pressed.png"
          x:Shared="False" />
 </ResourceDictionary>

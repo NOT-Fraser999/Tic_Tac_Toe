@@ -7,7 +7,9 @@ using TicTacToe.Desktop.Model;
 
 namespace TicTacToe.Desktop.ViewModel {
   public class GameViewModel : ViewModelBase {
+    private int _playerOWins;
     private string _playerTurn = "o";
+    private int _playerXWins;
 
     public GameViewModel() {
       NewGameCommand = new RelayCommand(NewGame);
@@ -30,8 +32,6 @@ namespace TicTacToe.Desktop.ViewModel {
       }
     }
 
-
-    private int _playerXWins;
     public int PlayerXWins {
       get {
         return _playerXWins;
@@ -46,8 +46,6 @@ namespace TicTacToe.Desktop.ViewModel {
       }
     }
 
-
-    private int _playerOWins;
     public int PlayerOWins {
       get {
         return _playerOWins;
@@ -61,8 +59,6 @@ namespace TicTacToe.Desktop.ViewModel {
         RaisePropertyChanged(() => PlayerOWins);
       }
     }
-    
-    
 
     public ObservableCollection<GameCell> GameBoard { get; private set; }
     public RelayCommand BackCommand { get; private set; }

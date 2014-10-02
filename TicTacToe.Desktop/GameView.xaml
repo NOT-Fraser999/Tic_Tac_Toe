@@ -27,14 +27,30 @@
     <DockPanel Grid.Row="0"
                HorizontalAlignment="Stretch"
                LastChildFill="True">
-      <Button Command="{Binding BackCommand}"
-              Content="{StaticResource BackImage}"
-              DockPanel.Dock="Left"
-              Style="{StaticResource ImageButtonStyle}" />
-      <Button Command="{Binding NewGameCommand}"
-              Content="{StaticResource NewGameImage}"
-              DockPanel.Dock="Right"
-              Style="{StaticResource ImageButtonStyle}" />
+      <Button Command="{Binding BackCommand}" DockPanel.Dock="Left">
+        <Button.Style>
+          <Style BasedOn="{StaticResource ImageButtonStyle}" TargetType="Button">
+            <Setter Property="Content" Value="{StaticResource BackImage}" />
+            <Style.Triggers>
+              <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Content" Value="{StaticResource BackPressedImage}" />
+              </Trigger>
+            </Style.Triggers>
+          </Style>
+        </Button.Style>
+      </Button>
+      <Button Command="{Binding NewGameCommand}" DockPanel.Dock="Right">
+        <Button.Style>
+          <Style BasedOn="{StaticResource ImageButtonStyle}" TargetType="Button">
+            <Setter Property="Content" Value="{StaticResource NewGameImage}" />
+            <Style.Triggers>
+              <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Content" Value="{StaticResource NewGamePressedImage}" />
+              </Trigger>
+            </Style.Triggers>
+          </Style>
+        </Button.Style>
+      </Button>
       <TextBlock Style="{StaticResource InfoTextBlockStyle}" Text="{Binding PlayerTurn, StringFormat=turn : {0}}" />
     </DockPanel>
 

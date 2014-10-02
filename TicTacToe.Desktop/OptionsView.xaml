@@ -12,18 +12,16 @@
     <ImageBrush ImageSource="Resources/Images/paper-background.png" />
   </UserControl.Background>
   <DockPanel LastChildFill="True">
-    <TextBlock Margin="0 20"
-               DockPanel.Dock="Top"
-               Foreground="SteelBlue"
-               Style="{StaticResource InfoTextBlockStyle}"
-               Text="Tic Tac Toe" />
+    <Image Margin="0 25"
+           DockPanel.Dock="Top"
+           Source="Resources/Images/tictactoe-logo.png" />
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
       <Button Command="{Binding TutorialCommand}"
               Content="Tutorial"
               Style="{StaticResource TextButtonStyle}" />
       <Button Margin="0 40 0 0"
               Command="{Binding StartGameCommand}"
-              Content="Start Game"
+              Content="Start"
               Style="{StaticResource TextButtonStyle}" />
     </StackPanel>
   </DockPanel>
