@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/paperBackground"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
+    <RelativeLayout
+        android:id="@+id/titleBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+        <ImageButton
+            android:id="@+id/BackButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:gravity="left"
+            android:background="@null"
+            android:src="@drawable/back_button_states"
+            android:scaleType="fitCenter" />
+        <TextView
+            android:id="@+id/TitleTextView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Tutorial"
+            android:textSize="28dp"
+            android:gravity="center"
+            android:textColor="#3F1292"
+            android:layout_marginRight="50dp"
+            android:layout_centerInParent="true"
+            android:layout_toRightOf="@id/BackButton"
+            android:layout_toLeftOf="@id/NewGameButton" />
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/TutorialTextView"
+        android:layout_below="@id/titleBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:text="How to play the game???"
+        android:textSize="28dp"
+        android:gravity="center"
+        android:textColor="#3F1292" />
+</RelativeLayout>

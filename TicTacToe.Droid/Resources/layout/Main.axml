@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/paperBackground"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
+    <ImageView
+        android:id="@+id/logo"
+        android:src="@drawable/tictactoeLogo"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_alignParentTop="true"
+        android:layout_margin="20dp" />
+    <Button
+        android:id="@+id/TutorialButton"
+        android:background="@null"
+        android:text="Tutorial"
+        android:layout_below="@id/logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@drawable/button_colors"
+        android:textSize="36dp" />
+    <Button
+        android:id="@+id/StartGameButton"
+        android:background="@null"
+        android:text="Start"
+        android:layout_below="@id/TutorialButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textColor="@drawable/button_colors"
+        android:textSize="36dp" />
+</RelativeLayout>
