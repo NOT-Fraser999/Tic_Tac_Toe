@@ -1,9 +1,5 @@
-﻿using System;
-
-namespace TicTacToe.Portable
-{
-  public enum CellState
-  {
+﻿namespace TicTacToe.Portable {
+  public enum CellState {
     Default,
     NormalX,
     NormalO,
@@ -11,4 +7,3 @@ namespace TicTacToe.Portable
     WinO
   }
 }
-

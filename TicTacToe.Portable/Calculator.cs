@@ -1,7 +1,7 @@
 ﻿namespace TicTacToe.Portable {
   public class Calculator {
     /// <summary>
-    /// Method to add two numbers
+    ///   Method to add two numbers
     /// </summary>
     /// <param name="numberOne">First Number</param>
     /// <param name="numberTwo">Second Number</param>
@@ -11,7 +11,7 @@
     }
 
     /// <summary>
-    /// Method to Subtract two numbers
+    ///   Method to Subtract two numbers
     /// </summary>
     /// <param name="numberOne">First Number</param>
     /// <param name="numberTwo">Second Number</param>
@@ -21,7 +21,7 @@
     }
 
     /// <summary>
-    /// Method to Multiply two numbers
+    ///   Method to Multiply two numbers
     /// </summary>
     /// <param name="numberOne">First Number</param>
     /// <param name="numberTwo">Second Number</param>
@@ -31,7 +31,7 @@
     }
 
     /// <summary>
-    /// Method to Divide two numbers
+    ///   Method to Divide two numbers
     /// </summary>
     /// <param name="numberOne">First Number</param>
     /// <param name="numberTwo">Second Number</param>

@@ -1,16 +1,12 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TicTacToe.Portable;
 
-namespace TicTacToe.Tests
-{
+namespace TicTacToe.Tests {
   [TestClass]
-  public class TicTacToeTest
-  {
+  public class TicTacToeTest {
     [TestMethod]
-    public void PlayerToggle()
-    {
-      TicTacToeGame game = new TicTacToeGame();
+    public void PlayerToggle() {
+      var game = new TicTacToeGame();
 
       Assert.AreEqual(game.PlayerTurn, Player.X);
 
