@@ -10,11 +10,15 @@ namespace TicTacToe.Portable
     public static readonly int BoardSize = 3;
 
     public Player PlayerTurn { get; private set; }
+    private int TurnCounter;
     private CellState[,] _gameBoard = new CellState[BoardSize, BoardSize];
+    CellState currentPlayerState = CellState.Default;
+    bool _gameOver = false;
 
 
     public TicTacToe()
     {
+      TurnCounter = 0;
       PlayerTurn = NewGameTurn;
         
       for (int i = 0; i < BoardSize; ++i) {
@@ -35,102 +39,29 @@ namespace TicTacToe.Portable
         _gameBoard[row, column] = CellState.NormalO;
       }
 
+      ++TurnCounter;
       CheckForWinner();
       TogglePlayer();
       return _gameBoard;
     }
 
     private  void CheckForWinner() {
-      bool _gameOver = false;
-      CellState currentPlayerState = CellState.Default;
       if (PlayerTurn == Player.X) {
         currentPlayerState = CellState.NormalX;
       } else {
         currentPlayerState = CellState.NormalO;
       }
+      RowCheck();
+      ColumnCheck();
+      DiagCheck(currentPlayerState);
 
-      for (int i = 0; i < BoardSize; ++i) {
-        if (_gameBoard[i, 0] != currentPlayerState || _gameBoard[i, 1] != currentPlayerState || _gameBoard[i, 2] != currentPlayerState) {
-          continue;
-        }
-        _gameOver = true;
-
-        if (PlayerTurn == Player.X) {
-          _gameBoard[i, 0] = CellState.WinX;
-          _gameBoard[i, 1] = CellState.WinX;
-          _gameBoard[i, 2] = CellState.WinX;
-          ++WinCountX;           
-        } else {
-          _gameBoard[i, 0] = CellState.WinO;
-          _gameBoard[i, 1] = CellState.WinO;
-          _gameBoard[i, 2] = CellState.WinO;
-          ++WinCountO;
-        }
+      if (PlayerTurn == Player.X && _gameOver == true) {
+        ++WinCountX;
+      } else if (PlayerTurn == Player.O && _gameOver == true) {
+        ++WinCountO;
       }
 
-      for (int i = 0; i < BoardSize; i++) {
-        if (_gameBoard[0, i] != currentPlayerState || _gameBoard[1, i] != currentPlayerState || _gameBoard[2, i] != currentPlayerState) {
-          continue;
-        }
-        _gameOver = true;
-
-        if (PlayerTurn == Player.X) {
-          _gameBoard[0, i] = CellState.WinX;
-          _gameBoard[1, i] = CellState.WinX;
-          _gameBoard[2, i] = CellState.WinX;
-          ++WinCountX;           
-        } else {
-          _gameBoard[0, i] = CellState.WinO;
-          _gameBoard[1, i] = CellState.WinO;
-          _gameBoard[2, i] = CellState.WinO;
-          ++WinCountO;
-      }
-          
-      // check columns, diag
-
-      // check if game is over - win or draw and then toggle the player to start next game
-    }
-
-      if (_gameBoard[0, 0] == currentPlayerState && _gameBoard[1, 1] == currentPlayerState && _gameBoard[2, 2] == currentPlayerState) {
-
-        _gameOver = true;
-        if (PlayerTurn == Player.X) {
-          _gameBoard[0, 0] = CellState.WinX;
-          _gameBoard[1, 1] = CellState.WinX;
-          _gameBoard[2, 2] = CellState.WinX;
-          ++WinCountX;
-        } else {
-          _gameBoard[0, 0] = CellState.WinO;
-          _gameBoard[1, 1] = CellState.WinO;
-          _gameBoard[2, 2] = CellState.WinO;
-          ++WinCountO;
-        }
-      } else if (_gameBoard[2, 0] == currentPlayerState && _gameBoard[1, 1] == currentPlayerState && _gameBoard[0, 2] == currentPlayerState) {
-
-        _gameOver = true;
-        if (PlayerTurn == Player.X) {
-          _gameBoard[0, 0] = CellState.WinX;
-          _gameBoard[1, 1] = CellState.WinX;
-          _gameBoard[2, 2] = CellState.WinX;
-          ++WinCountX;           
-        } else {
-          _gameBoard[0, 0] = CellState.WinO;
-          _gameBoard[1, 1] = CellState.WinO;
-          _gameBoard[2, 2] = CellState.WinO;
-          ++WinCountO;
-      }
-    }
-
-      int DrawCellCounter = 0 ;
-      for (int i = 0; i < BoardSize; ++i) {
-        for (int j = 0; j < BoardSize; ++j) {
-          if (_gameBoard[i, j] != CellState.Default) {
-            ++DrawCellCounter;
-          }
-        }
-      }
-
-      if (DrawCellCounter == 9) {
+      if (TurnCounter == (BoardSize * BoardSize)) {
         _gameOver = true;
       }
 
@@ -151,6 +82,77 @@ namespace TicTacToe.Portable
       }
 
       PlayerTurn = Player.X;
+    }
+
+    private void DiagCheck(CellState searchState){
+      bool _diagonalOneWin = true;
+      bool _diagonalTwoWin = true;
+
+      for (int i = 0; i < BoardSize; i++) {
+
+        if (_gameBoard[i, i] != searchState) {
+          _diagonalOneWin = false;
+        }
+        if (_gameBoard[i, BoardSize - i - 1] != searchState) {
+          _diagonalTwoWin = false;
+        }
+        if (!_diagonalOneWin && !_diagonalTwoWin) {
+          return;
+        }
+      }
+
+      for (int i = 0; i < BoardSize; ++i) {
+        if (_diagonalOneWin == true) {
+          if (PlayerTurn == Player.X) {
+            _gameBoard[i, i] = CellState.WinX;
+          } else {
+            _gameBoard[i, i] = CellState.WinO;
+          }
+        }
+
+        if (_diagonalTwoWin == true)
+        if (PlayerTurn == Player.X) {
+          _gameBoard[i, BoardSize - i - 1] = CellState.WinX;
+        } else {
+          _gameBoard[i, BoardSize - i - 1] = CellState.WinO;
+        }
+      }
+        
+    }
+
+    private void RowCheck(){
+      for (int i = 0; i < BoardSize; i++) {
+        if (_gameBoard[0, i] != currentPlayerState || _gameBoard[1, i] != currentPlayerState || _gameBoard[2, i] != currentPlayerState) {
+          continue;
+        }
+        _gameOver = true;
+
+        for (int j = 0; j < BoardSize; j++) {
+          if(PlayerTurn == Player.X) {
+            _gameBoard[j, i] = CellState.WinX;
+            return;
+          }
+          _gameBoard[j, i] = CellState.WinO;
+        }
+          
+      }
+    }
+
+    private void ColumnCheck() {
+      for (int i = 0; i < BoardSize; ++i) {
+        if (_gameBoard[i, 0] != currentPlayerState || _gameBoard[i, 1] != currentPlayerState || _gameBoard[i, 2] != currentPlayerState) {
+          continue;
+        }
+        _gameOver = true;
+
+        for (int j = 0; j < BoardSize; j++) {
+          if (PlayerTurn == Player.X) {
+            _gameBoard[i, j] = CellState.WinX;
+            return;
+          }
+          _gameBoard[i, j] = CellState.WinO;
+        }
+      }
     }
   }
 }
