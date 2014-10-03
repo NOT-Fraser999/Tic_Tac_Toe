@@ -2,7 +2,7 @@
 
 namespace TicTacToe.Portable
 {
-  public class TicTacToe
+  public class TicTacToeGame
   {
     public static int WinCountX { get; private set; }
     public static int WinCountO { get; private set; }
@@ -16,7 +16,7 @@ namespace TicTacToe.Portable
     bool _gameOver = false;
 
 
-    public TicTacToe()
+    public TicTacToeGame()
     {
       TurnCounter = 0;
       PlayerTurn = NewGameTurn;
