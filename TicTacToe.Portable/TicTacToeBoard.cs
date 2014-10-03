@@ -41,7 +41,7 @@ namespace TicTacToe.Portable
     }
 
     private  void CheckForWinner() {
-      int _gameOver = 0;
+      bool _gameOver = false;
       CellState currentPlayerState = CellState.Default;
       if (PlayerTurn == Player.X) {
         currentPlayerState = CellState.NormalX;
@@ -53,7 +53,7 @@ namespace TicTacToe.Portable
         if (_gameBoard[i, 0] != currentPlayerState || _gameBoard[i, 1] != currentPlayerState || _gameBoard[i, 2] != currentPlayerState) {
           continue;
         }
-        _gameOver = 1;
+        _gameOver = true;
 
         if (PlayerTurn == Player.X) {
           _gameBoard[i, 0] = CellState.WinX;
@@ -72,7 +72,7 @@ namespace TicTacToe.Portable
         if (_gameBoard[0, i] != currentPlayerState || _gameBoard[1, i] != currentPlayerState || _gameBoard[2, i] != currentPlayerState) {
           continue;
         }
-        _gameOver = 1;
+        _gameOver = true;
 
         if (PlayerTurn == Player.X) {
           _gameBoard[0, i] = CellState.WinX;
@@ -93,7 +93,7 @@ namespace TicTacToe.Portable
 
       if (_gameBoard[0, 0] == currentPlayerState && _gameBoard[1, 1] == currentPlayerState && _gameBoard[2, 2] == currentPlayerState) {
 
-        _gameOver = 1;
+        _gameOver = true;
         if (PlayerTurn == Player.X) {
           _gameBoard[0, 0] = CellState.WinX;
           _gameBoard[1, 1] = CellState.WinX;
@@ -107,7 +107,7 @@ namespace TicTacToe.Portable
         }
       } else if (_gameBoard[2, 0] == currentPlayerState && _gameBoard[1, 1] == currentPlayerState && _gameBoard[0, 2] == currentPlayerState) {
 
-        _gameOver = 1;
+        _gameOver = true;
         if (PlayerTurn == Player.X) {
           _gameBoard[0, 0] = CellState.WinX;
           _gameBoard[1, 1] = CellState.WinX;
@@ -131,11 +131,11 @@ namespace TicTacToe.Portable
       }
 
       if (DrawCellCounter == 9) {
-        _gameOver = 1;
+        _gameOver = true;
       }
 
 
-      if (_gameOver == 1) {
+      if (_gameOver == true) {
         if (NewGameTurn == Player.X) {
           NewGameTurn = Player.O;
           return;
