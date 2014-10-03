@@ -13,9 +13,9 @@ namespace TicTacToe.Droid {
       base.OnCreate(bundle);
       RequestWindowFeature(WindowFeatures.NoTitle);
 
-      // Window.SetFlags(WindowManagerFlags.Fullscreen, WindowManagerFlags.Fullscreen);
-
       SetContentView(Resource.Layout.Main);
+      OverridePendingTransition(Resource.Animation.trans_left_in, Resource.Animation.trans_left_out);
+
       var tutorialButton = FindViewById<Button>(Resource.Id.TutorialButton);
       var startGameButton = FindViewById<Button>(Resource.Id.StartGameButton);
       Typeface typeFace = Typeface.CreateFromAsset(Assets, "fonts/wg_legacy_edition.ttf");
@@ -29,11 +29,13 @@ namespace TicTacToe.Droid {
 
     private void TutorialButtonOnClick(object sender, EventArgs eventArgs) {
       var intent = new Intent(this, typeof(TutorialActivity));
+      OverridePendingTransition(Resource.Animation.trans_right_in, Resource.Animation.trans_right_out);
       StartActivity(intent);
     }
 
     private void StartGameButtonOnClick(object sender, EventArgs eventArgs) {
       var intent = new Intent(this, typeof(GameActivity));
+      OverridePendingTransition(Resource.Animation.trans_right_in, Resource.Animation.trans_right_out);
       StartActivity(intent);
     }
   }

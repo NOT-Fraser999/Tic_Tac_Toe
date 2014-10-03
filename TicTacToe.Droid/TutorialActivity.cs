@@ -13,6 +13,8 @@ namespace TicTacToe.Droid {
       RequestWindowFeature(WindowFeatures.NoTitle);
 
       SetContentView(Resource.Layout.Tutorial);
+      OverridePendingTransition(Resource.Animation.trans_left_in, Resource.Animation.trans_left_out);
+
       var textView = FindViewById<TextView>(Resource.Id.TutorialTextView);
       var backButton = FindViewById<ImageButton>(Resource.Id.BackButton);
 
@@ -24,7 +26,8 @@ namespace TicTacToe.Droid {
     }
 
     private void BackButtonOnClick(object sender, EventArgs eventArgs) {
-      Finish();
+      base.OnBackPressed();
+      OverridePendingTransition(Resource.Animation.trans_right_in, Resource.Animation.trans_right_out);
     }
   }
 }
