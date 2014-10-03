@@ -1,20 +1,22 @@
 ﻿using System.Collections.ObjectModel;
-using System.Diagnostics;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using TicTacToe.Desktop.Model;
+using TicTacToe.Portable;
 
 namespace TicTacToe.Desktop.ViewModel {
   public class GameViewModel : ViewModelBase {
     private int _playerOWins;
     private string _playerTurn = "o";
     private int _playerXWins;
+    private TicTacToeGame _ticTacToeGame;
 
     public GameViewModel() {
       NewGameCommand = new RelayCommand(NewGame);
       CellClickedCommand = new RelayCommand<GameCell>(OnCellClicked);
       BackCommand = new RelayCommand(() => Messenger.Default.Send("Options"));
+      GameBoard = new ObservableCollection<GameCell>();
       NewGame();
     }
 
@@ -65,16 +67,33 @@ namespace TicTacToe.Desktop.ViewModel {
     public RelayCommand NewGameCommand { get; private set; }
     public RelayCommand<GameCell> CellClickedCommand { get; private set; }
 
+    private void UpdateBoardStats() {
+      PlayerTurn = _ticTacToeGame.PlayerTurn == Player.O ? "o" : "x";
+      PlayerXWins = TicTacToeGame.WinCountX;
+      PlayerOWins = TicTacToeGame.WinCountO;
+    }
+
     private void OnCellClicked(GameCell cell) {
-      Debug.WriteLine("Row: {0} Col: {1}", cell.Row, cell.Column);
+      var updatedBoard = _ticTacToeGame.NewMoveMade(cell.Row, cell.Column);
+      int count = 0;
+      for (int i = 0; i < TicTacToeGame.BoardSize; ++i) {
+        for (int j = 0; j < TicTacToeGame.BoardSize; ++j) {
+          GameBoard[count++].State = updatedBoard[i, j];
+        }
+      }
+
+      UpdateBoardStats();
     }
 
     private void NewGame() {
-      GameBoard = new ObservableCollection<GameCell>();
+      _ticTacToeGame = new TicTacToeGame();
+      GameBoard.Clear();
 
       for (int i = 0; i < 9; ++i) {
         GameBoard.Add(new GameCell(i));
       }
+
+      UpdateBoardStats();
     }
   }
 }

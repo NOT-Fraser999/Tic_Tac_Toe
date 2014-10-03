@@ -1,16 +1,17 @@
 ﻿namespace TicTacToe.Portable {
   public class TicTacToeGame {
-    private static Player NewGameTurn = Player.X;
+    private static Player _newGameTurn = Player.X;
     public static readonly int BoardSize = 3;
 
     private readonly CellState[,] _gameBoard = new CellState[BoardSize, BoardSize];
-    private int TurnCounter;
+    private CellState _currentPlayerState = CellState.Default;
     private bool _gameOver;
-    private CellState currentPlayerState = CellState.Default;
+    private int _turnCounter;
 
     public TicTacToeGame() {
-      TurnCounter = 0;
-      PlayerTurn = NewGameTurn;
+      _turnCounter = 0;
+      PlayerTurn = _newGameTurn;
+      _newGameTurn = _newGameTurn == Player.X ? Player.O : Player.X;
 
       for (int i = 0; i < BoardSize; ++i) {
         for (int j = 0; j < BoardSize; ++j) {
@@ -24,7 +25,7 @@
     public Player PlayerTurn { get; private set; }
 
     public CellState[,] NewMoveMade(int row, int column) {
-      if (_gameBoard[row, column] != CellState.Default) {
+      if (_gameBoard[row, column] != CellState.Default || _gameOver) {
         return _gameBoard;
       }
 
@@ -34,21 +35,18 @@
         _gameBoard[row, column] = CellState.NormalO;
       }
 
-      ++TurnCounter;
+      ++_turnCounter;
       CheckForWinner();
       TogglePlayer();
       return _gameBoard;
     }
 
     private void CheckForWinner() {
-      if (PlayerTurn == Player.X) {
-        currentPlayerState = CellState.NormalX;
-      } else {
-        currentPlayerState = CellState.NormalO;
-      }
-      RowCheck();
+      _currentPlayerState = PlayerTurn == Player.X ? CellState.NormalX : CellState.NormalO;
+
       ColumnCheck();
-      DiagCheck(currentPlayerState);
+      RowCheck();
+      DiagCheck(_currentPlayerState);
 
       if (PlayerTurn == Player.X && _gameOver) {
         ++WinCountX;
@@ -56,16 +54,8 @@
         ++WinCountO;
       }
 
-      if (TurnCounter == (BoardSize * BoardSize)) {
+      if (_turnCounter == (BoardSize * BoardSize)) {
         _gameOver = true;
-      }
-
-      if (_gameOver) {
-        if (NewGameTurn == Player.X) {
-          NewGameTurn = Player.O;
-          return;
-        }
-        NewGameTurn = Player.O;
       }
     }
 
@@ -79,72 +69,58 @@
     }
 
     private void DiagCheck(CellState searchState) {
-      bool _diagonalOneWin = true;
-      bool _diagonalTwoWin = true;
+      bool diagonalOneWin = true;
+      bool diagonalTwoWin = true;
 
       for (int i = 0; i < BoardSize; i++) {
         if (_gameBoard[i, i] != searchState) {
-          _diagonalOneWin = false;
+          diagonalOneWin = false;
         }
         if (_gameBoard[i, BoardSize - i - 1] != searchState) {
-          _diagonalTwoWin = false;
+          diagonalTwoWin = false;
         }
-        if (!_diagonalOneWin && !_diagonalTwoWin) {
+        if (!diagonalOneWin && !diagonalTwoWin) {
           return;
         }
       }
 
+      _gameOver = true;
+
       for (int i = 0; i < BoardSize; ++i) {
-        if (_diagonalOneWin) {
-          if (PlayerTurn == Player.X) {
-            _gameBoard[i, i] = CellState.WinX;
-          } else {
-            _gameBoard[i, i] = CellState.WinO;
-          }
-        }
-
-        if (_diagonalTwoWin) {
-          if (PlayerTurn == Player.X) {
-            _gameBoard[i, BoardSize - i - 1] = CellState.WinX;
-          } else {
-            _gameBoard[i, BoardSize - i - 1] = CellState.WinO;
-          }
-        }
-      }
-    }
-
-    private void RowCheck() {
-      for (int i = 0; i < BoardSize; i++) {
-        if (_gameBoard[0, i] != currentPlayerState || _gameBoard[1, i] != currentPlayerState ||
-            _gameBoard[2, i] != currentPlayerState) {
-          continue;
-        }
-        _gameOver = true;
-
-        for (int j = 0; j < BoardSize; j++) {
-          if (PlayerTurn == Player.X) {
-            _gameBoard[j, i] = CellState.WinX;
-            return;
-          }
-          _gameBoard[j, i] = CellState.WinO;
+        if (diagonalOneWin) {
+          _gameBoard[i, i] = PlayerTurn == Player.X ? CellState.WinX : CellState.WinO;
+        } else {
+          _gameBoard[i, BoardSize - i - 1] = PlayerTurn == Player.X ? CellState.WinX : CellState.WinO;
         }
       }
     }
 
     private void ColumnCheck() {
-      for (int i = 0; i < BoardSize; ++i) {
-        if (_gameBoard[i, 0] != currentPlayerState || _gameBoard[i, 1] != currentPlayerState ||
-            _gameBoard[i, 2] != currentPlayerState) {
+      for (int columnIndex = 0; columnIndex < BoardSize; columnIndex++) {
+        if (_gameBoard[0, columnIndex] != _currentPlayerState ||
+            _gameBoard[1, columnIndex] != _currentPlayerState ||
+            _gameBoard[2, columnIndex] != _currentPlayerState) {
           continue;
         }
         _gameOver = true;
 
-        for (int j = 0; j < BoardSize; j++) {
-          if (PlayerTurn == Player.X) {
-            _gameBoard[i, j] = CellState.WinX;
-            return;
-          }
-          _gameBoard[i, j] = CellState.WinO;
+        for (int rowIndex = 0; rowIndex < BoardSize; rowIndex++) {
+          _gameBoard[rowIndex, columnIndex] = PlayerTurn == Player.X ? CellState.WinX : CellState.WinO;
+        }
+      }
+    }
+
+    private void RowCheck() {
+      for (int rowIndex = 0; rowIndex < BoardSize; ++rowIndex) {
+        if (_gameBoard[rowIndex, 0] != _currentPlayerState ||
+            _gameBoard[rowIndex, 1] != _currentPlayerState ||
+            _gameBoard[rowIndex, 2] != _currentPlayerState) {
+          continue;
+        }
+        _gameOver = true;
+
+        for (int columnIndex = 0; columnIndex < BoardSize; columnIndex++) {
+          _gameBoard[rowIndex, columnIndex] = PlayerTurn == Player.X ? CellState.WinX : CellState.WinO;
         }
       }
     }

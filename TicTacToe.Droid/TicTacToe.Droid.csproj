@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CellPosition.cs" />
     <Compile Include="GameActivity.cs" />
     <Compile Include="TutorialActivity.cs" />
     <Compile Include="MainActivity.cs" />
@@ -85,8 +86,14 @@
     <AndroidResource Include="Resources\anim\trans_left_out.xml" />
     <AndroidResource Include="Resources\anim\trans_right_in.xml" />
     <AndroidResource Include="Resources\anim\trans_right_out.xml" />
+    <AndroidResource Include="Resources\drawable\tutorial.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\TicTacToe.Portable\TicTacToe.Portable.csproj">
+      <Project>{12c320e0-6e39-48a7-b0ee-961853454089}</Project>
+      <Name>TicTacToe.Portable</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
      Other similar extension points exist, see Microsoft.Common.targets.

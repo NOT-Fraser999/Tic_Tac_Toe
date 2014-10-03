@@ -98,7 +98,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Converters\CellStateConverter.cs" />
     <Compile Include="GameView.xaml.cs">
       <DependentUpon>GameView.xaml</DependentUpon>
     </Compile>
@@ -214,6 +213,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="app-icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TicTacToe.Portable\TicTacToe.Portable.csproj">
+      <Project>{12c320e0-6e39-48a7-b0ee-961853454089}</Project>
+      <Name>TicTacToe.Portable</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\tutorial.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

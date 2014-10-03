@@ -120,6 +120,9 @@ namespace TicTacToe.Droid
 			// aapt resource value: 0x7f020010
 			public const int tictactoeLogo = 2130837520;
 			
+			// aapt resource value: 0x7f020011
+			public const int tutorial = 2130837521;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -155,7 +158,7 @@ namespace TicTacToe.Droid
 			public const int TutorialButton = 2131165201;
 			
 			// aapt resource value: 0x7f070013
-			public const int TutorialTextView = 2131165203;
+			public const int TutorialImageView = 2131165203;
 			
 			// aapt resource value: 0x7f070007
 			public const int button1 = 2131165191;

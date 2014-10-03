@@ -27,6 +27,6 @@
                  Style="{StaticResource InfoTextBlockStyle}"
                  Text="Tutorial" />
     </DockPanel>
-    <TextBlock Grid.Row="1" />
+    <Image Grid.Row="1" Source="Resources/Images/tutorial.png" />
   </Grid>
 </UserControl>

@@ -35,13 +35,10 @@
             android:layout_toRightOf="@id/BackButton"
             android:layout_toLeftOf="@id/NewGameButton" />
     </RelativeLayout>
-    <TextView
-        android:id="@+id/TutorialTextView"
+    <ImageView
+        android:id="@+id/TutorialImageView"
+        android:src="@drawable/tutorial"
         android:layout_below="@id/titleBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:text="How to play the game???"
-        android:textSize="28dp"
-        android:gravity="center"
-        android:textColor="#3F1292" />
+        android:layout_height="fill_parent" />
 </RelativeLayout>
