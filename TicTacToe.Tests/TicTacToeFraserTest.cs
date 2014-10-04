@@ -26,9 +26,18 @@ namespace TicTacToe.Tests
     [TestMethod]
     public void TogglePlayers()
     {
-
-
-
+      var game = new TicTacToeGame();
+      for (int i = 0; i < TicTacToeGame.BoardSize; ++i)
+      {
+        if (game.PlayerTurn == Player.X)
+        {
+          game.NewMoveMade(0, i);
+          Assert.AreEqual(game.PlayerTurn, Player.O);
+        } else {
+          game.NewMoveMade(0, i);
+          Assert.AreEqual(game.PlayerTurn, Player.X);
+         }
+      }
     }
 
     [TestMethod]
