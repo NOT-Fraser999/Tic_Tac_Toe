@@ -70,14 +70,14 @@ namespace TicTacToe.Tests
         Assert.AreEqual(TicTacToeGame.WinCountX, startingWinCountX + thisTestWinCountX);
         Assert.AreEqual(TicTacToeGame.WinCountO, startingWinCountO + thisTestWinCountO);
         var startingPlayer = game.PlayerTurn;
-        game.NewMoveMade(0, 0);
-        game.NewMoveMade(0, 1);
-        game.NewMoveMade(1, 0);
-        game.NewMoveMade(1, 1);
+        for (int j = 0; j < TicTacToeGame.BoardSize - 1; ++j) {
+          game.NewMoveMade(j, 0);
+          game.NewMoveMade(j, 1);
+        }
 
         Assert.AreEqual(TicTacToeGame.WinCountX, startingWinCountX + thisTestWinCountX);
         Assert.AreEqual(TicTacToeGame.WinCountO, startingWinCountO + thisTestWinCountO);
-        game.NewMoveMade(2, 0);
+        game.NewMoveMade(TicTacToeGame.BoardSize - 1, 0);
         if (startingPlayer == Player.X)
         {
           ++thisTestWinCountX;
