@@ -161,5 +161,8 @@
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\app-icon-57.png" />
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\app-icon-114.png" />
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\app-icon-120.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImages.launchimage\launch-480.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImages.launchimage\launch-960.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImages.launchimage\launch-1136.png" />
   </ItemGroup>
 </Project>

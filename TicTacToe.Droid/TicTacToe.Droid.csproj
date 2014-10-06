@@ -90,7 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TicTacToe.Portable\TicTacToe.Portable.csproj">
-      <Project>{12c320e0-6e39-48a7-b0ee-961853454089}</Project>
+      <Project>{12C320E0-6E39-48A7-B0EE-961853454089}</Project>
       <Name>TicTacToe.Portable</Name>
     </ProjectReference>
   </ItemGroup>
