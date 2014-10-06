@@ -50,6 +50,9 @@
     <CodesignKey>iPhone Developer</CodesignKey>
     <IpaPackageName>
     </IpaPackageName>
+    <MtouchI18n>
+    </MtouchI18n>
+    <MtouchArch>ARMv7</MtouchArch>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>full</DebugType>
@@ -72,6 +75,8 @@
     <BuildIpa>true</BuildIpa>
     <CodesignProvision>Automatic:AdHoc</CodesignProvision>
     <CodesignKey>iPhone Distribution</CodesignKey>
+    <IpaPackageName>
+    </IpaPackageName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
     <DebugType>full</DebugType>
@@ -91,7 +96,6 @@
     <Reference Include="monotouch" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Default-568h%402x.png" />
     <BundleResource Include="Resources\wg_legacy_edition.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
@@ -154,5 +158,8 @@
     <ImageAsset Include="Resources\Images.xcassets\tutorial.imageset\tutorial.png" />
     <ImageAsset Include="Resources\Images.xcassets\back.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\back.imageset\back.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\app-icon-57.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\app-icon-114.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\app-icon-120.png" />
   </ItemGroup>
 </Project>

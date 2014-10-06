@@ -5,7 +5,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>TicTacToe</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.maidsafe.TicTacToe</string>
+	<string>net.maidsafe.TicTacToe</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
@@ -47,5 +47,11 @@
 	<true/>
 	<key>UIStatusBarHidden</key>
 	<true/>
+	<key>XSAppIconAssets</key>
+	<string>Resources/Images.xcassets/AppIcons.appiconset</string>
+	<key>XSLaunchImageAssets</key>
+	<string>Resources/Images.xcassets/LaunchImages.launchimage</string>
+	<key>UILaunchStoryboardName</key>
+	<string>MainStoryboard</string>
 </dict>
 </plist>
